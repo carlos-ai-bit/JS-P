@@ -1,49 +1,44 @@
-function validateForm(event) {
-    event.preventDefault()
-    let firstName = document.getElementById("fname").value;
-    let LastName = document.getElementById("lname").value;
-    let DateOfBirth = document.getElementById("birth").value;
-    let Email = document.getElementById("Address").value;
-    let Telephone = document.getElementById("number").value;
+const form = document.getElementById("myForm");
 
+form.addEventListener("submit", (e) => {
+    //stop form from [page] reloading
+    e.preventDefault();
+    const firstName = document.getElementById("firstName").value;
+    const lastName = document.getElementById("lastName").value;
+    const dob = document.getElementById("dob").value;
+    const email = document.getElementById("email").value;
+    const phoneNumber = document.getElementById("phoneNumber").value;
 
-    if (firstName === "") {
-        alert("Please enter your name .");
-        firstName.focus();
-        return false;
+    const today = new Date();
+    const dateInput = new Date(dob);
+
+    if (phoneNumber.length !== 10) {
+        alert("Phone number must be 10 digits");
+    } else if (firstName.length > 20 || lastName.length > 20) {
+        alert("Name should be less than 20 characters");
+    } else if (phoneNumber.charAt(0) !== "0" || phoneNumber.charAt(1) !== "7") {
+        alert("Phone number should start with a 0");
+    } else if (dateInput > today) {
+        alert("Please enter a valid date");
+    } else if (
+        firstName.charAt(0) !== firstName.charAt(0).toUpperCase() ||
+        lastName.charAt(0) !== lastName.charAt(0).toUpperCase()
+    ) {
+        alert("Please enter a valid name, that starts with a capital letter");
+    } else {
+        const fullName = firstName + " " + lastName;
+        const age = today.getFullYear() - dateInput.getFullYear();
+
+        console.log(
+            "my form ",
+            "fullName : ",
+            fullName,
+            "age : ",
+            age,
+            "email : ",
+            email,
+            "phoneNumber : ",
+            phoneNumber
+        );
     }
-
-    if (LastName == "") {
-        alert("Please enter your name.");
-        LastName.focus();
-        // return false;
-    }
-
-    if (DateOfBirth == "") {
-        alert("Please enter your Date of Birth.");
-        DateOfBirth.focus(); DateOfBirth.focus();
-
-        return false;
-    }
-    if (Email == "") {
-        alert("Please enter your Email.");
-        E - mailAddress.focus();
-        return false;
-    }
-
-    if (Telephone == "") {
-        alert("Please enter your name phone number.");
-        Telephone.focus();
-        return false;
-    }
-
-    //  form.addEventListener("submit", function (e) {
-    //     prevent the form from submitting
-    //     e.preventDefault();
-    // });
-    else console.log(firstName, LastName, DateOfBirth, Email.Telephone)
-    return true;
-}
-// function displaySubmittedData(firstName, LastName, DateOfBirth, Email, Telephone) {
-//     const submittedDataElement = document.getElementById("submittedData");
-// }
+});

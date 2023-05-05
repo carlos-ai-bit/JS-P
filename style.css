@@ -1,3 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 body {
     background-color: grey;
+}
+
+#firstName {
+    border-radius: 52px;
+    display: flex;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#lastName {
+    border-radius: 50px;
+    display: flex;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#email {
+    border-radius: 52px;
+    display: flex;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#dob {
+    border-radius: 52px;
+    display: flex;
+    font-size: 15px;
+
+}
+
+#phoneNumber {
+    border-radius: 52px;
+    display: flex;
+    font-size: 15px;
+    font-weight: bold;
 }
